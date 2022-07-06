@@ -25,7 +25,7 @@ const sink ={
     "Shape of You":9700,
     "Survivor":9700,
     "Toxic":9700,
-    "Viva La Vida":9700,
+    "Viva La Vida":10000,
 };
 
 
@@ -39,6 +39,7 @@ let workVideo, breakVideo;
 let music;
 let musicForm;
 let startSound;
+let isAudioLoaded;
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     musicForm = document.getElementById("musicForm");
     music = new Audio("audio/"+"Back in Black"+".m4a");
     startSound = new Audio("wav/start.wav");
+    isAudioLoaded = false;
 
     musicList.forEach(element => {
         const newOption = document.createElement("option");
@@ -60,9 +62,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     musicForm.addEventListener("change",()=>{
         music.setAttribute('src',"audio/"+musicForm.value+".m4a");
+        isAudioLoaded = false;
         music.load();
     });
-
+    music.addEventListener("canplaythrough", event => {
+        isAudioLoaded = true;
+        console.log(1);
+      });
     timerButton.addEventListener("click", (e) => {
         timerButton.disabled = true;
         musicForm.disabled = true;
@@ -74,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         breakVideo.classList.remove("d-none");
         workVideo.classList.add("d-none"); 
         function waitMusicLoading(){
-            if(music.readyState>=3){
+            if(isAudioLoaded){
                 music.play();
                 startSound.play();
                 setTimeout(startTimer, sink[musicForm.value]);
@@ -82,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(waitMusicLoading,30);
             }
         }
-        
+
         setTimeout(waitMusicLoading,30);
     });
 
