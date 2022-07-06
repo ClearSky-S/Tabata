@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     timerButton.addEventListener("click", (e) => {
         timerButton.disabled = true;
+        musicForm.disabled = true;
         cycle=1;
         isWorking = true;
         cycleMonitor.innerHTML = cycle + "/" + TOTAL_CYCLE;
@@ -98,6 +99,7 @@ function countTime() {
     if (cycle == TOTAL_CYCLE && isWorking == true && (time >= WORK_DURATION)) {
         // music.pause();
         timerButton.disabled = false;
+        musicForm.disabled = false;
         workVideo.classList.remove("d-none");
         breakVideo.classList.add("d-none"); 
         return;
