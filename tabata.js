@@ -70,12 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
         workVideo.classList.add("d-none"); 
         music.setAttribute('src',"audio/"+musicForm.value+".m4a");
         music.load();
-        music.oncanplay = ()=>{
+        function whenCanPlay(){
             music.play();
             startSound.play();
             setTimeout(startTimer, sink[musicForm.value]);
-            music.oncanplay= null;
+            music.removeEventListener('canplaythrough',whenCanPlay);
         }
+        music.addEventListener('canplaythrough', whenCanPlay,false);
     });
 
 });
