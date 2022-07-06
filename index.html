@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabata</title>
+    <title>ZumbaFit Studio</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -15,10 +15,18 @@
     crossorigin="anonymous"></script>
     <script type="text/javascript" src="./tabata.js"></script>
 </head>
+<style>
+    body{
+        background-color:#82957E;
+    }
+</style>
 <body>
     <nav class="navbar navbar-expand-md navbar-light" style="background-color: #a6d37c;">
         <div class="container-fluid">
-            <a href="./index.html" class="navbar-brand">Tabata</a>
+            <a href="./index.html" class="navbar-brand">ZumbaFit Studio</a>
+            <div>
+                Alex Challenge
+            </div>
             <!-- <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,28 +43,60 @@
     </nav>
 
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <!-- <div class="" style="width: 200px">
-                <div id="timerMoniter" class="border form-control my-3">0</div>
-                <div class="">
-                    <button id="timerButton" class="btn btn-primary px-3" style="width: 85px">Start</button>
-                    <button disabled id="stopButton" class="btn btn-danger " style="width: 85px">Stop</button>
+    <div class="container" >
+        <div class="row justify-content-center mt-3">
+            <label class="col-sm-1 col-form-label text-white" for="selectMusic">Music</label>
+            <div class="col-6">
+                <select class="form-select" id="musicForm">
+                    <!-- <option>Back in Black</option>
+                    <option>BlindingLights</option>
+                    <option>DanceMonkey</option>
+                    <option>HigherLove</option>
+                    <option>Levitating</option>
+                    <option>Poker Face</option>
+                    <option>Rockabye</option>
+                    <option>Shape of You</option>
+                    <option>Survivor</option>
+                    <option>Viva La Vida</option> -->
+                </select>
+            </div>
+            <audio>
+                <!-- <source src="audio/Back in Black.m4a" type="audio/mp3"> -->
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="row justify-content-center mt-3">
+                <video autoplay loop muted class="col-md-4" id=idleVideo>
+                    <source src="img/idle.mp4" type="video/mp4">
+                </video>
+                <video autoplay loop muted class="col-md-4 d-none" id="walkVideo">
+                    <source src="img/walk.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-lg-6">
+                <div id="cycleMoniter" class="border border-white rounded text-light align-middle px-2 py-1" style="width:42px;">
+                    1/8
                 </div>
-            </div> -->
+            </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-4"><img src="img/run3.gif" class="img-fluid"/></div>
+        <div class="row justify-content-center mt-2">
+            <div class="col-lg-6">
+                <div class="progress">
+                    <div id="workBar" class="progress-bar bg-danger" style="transition:none; width: 1%"></div>
+                </div>
+            </div>
         </div>
-        <div class="d-none">Break image</div>
-        <div class="row">
-            <div class="progress px-0">
-                <div class="progress-bar" style="width: 30%"></div>
+        <div class="row justify-content-center mt-2">
+            <div class="col-lg-6">
+                <div class="progress">
+                    <div id="brakBar" class="progress-bar bg-success" style="transition:none; width: 1%"></div>
+                </div>
             </div>
         </div>
         <div class="row mt-3 justify-content-center">
-                <button id="timerButton" class="btn btn-primary px-3 mx-2 my-1" style="width: 85px">Start</button>
-                <button disabled id="stopButton" class="btn btn-danger mx-2 my-1" style="width: 85px">Stop</button>
+                <button id="timerButton" class="btn btn-light px-3 mx-2 my-1" style="width: 85px">Start</button>
         </div>
     </div>
 </body>
