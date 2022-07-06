@@ -70,11 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
         workVideo.classList.add("d-none"); 
         music.setAttribute('src',"audio/"+musicForm.value+".m4a");
         music.load();
-        music.onloadeddata = ()=>{
+        music.oncanplay = ()=>{
             music.play();
             startSound.play();
             setTimeout(startTimer, sink[musicForm.value]);
-            music.onloadeddata= null;
+            music.oncanplay= null;
         }
     });
 
