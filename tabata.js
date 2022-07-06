@@ -14,7 +14,19 @@ const musicList = [
     "Toxic",
     "Viva La Vida",
 ];
-
+const sink ={
+    "Back in Black":9700,
+    "BlindingLights":9700,
+    "DanceMonkey":9700,
+    "HigherLove":9700,
+    "Levitating":9700,
+    "Poker Face":9700,
+    "Rockabye":9700,
+    "Shape of You":9700,
+    "Survivor":9700,
+    "Toxic":9700,
+    "Viva La Vida":9700,
+};
 
 
 let cycle = 1;
@@ -37,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     breakVideo = document.querySelectorAll("video")[0];
     workVideo = document.querySelectorAll("video")[1];
     musicForm = document.getElementById("musicForm");
-    music = new Audio("audio/"+musicForm.value+".m4a");
+    music = new Audio("audio/"+"Back in Black"+".m4a");
     startSound = new Audio("wav/start.wav");
 
     musicList.forEach(element => {
@@ -61,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         music.play();
         startSound.play();
         
-        timer = setTimeout(startTimer, 9700);
+        timer = setTimeout(startTimer, sink[musicForm.value]);
     });
 
 });
