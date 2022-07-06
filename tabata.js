@@ -58,6 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
         newOption.text = element;
         musicForm.appendChild(newOption);
     });
+    musicForm.addEventListener("change",()=>{
+        music.setAttribute('src',"audio/"+musicForm.value+".m4a");
+        music.load();
+    });
 
     timerButton.addEventListener("click", (e) => {
         timerButton.disabled = true;
@@ -68,15 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
         breakBar.style.width = "0%";
         breakVideo.classList.remove("d-none");
         workVideo.classList.add("d-none"); 
-        music.setAttribute('src',"audio/"+musicForm.value+".m4a");
-        music.load();
-        function whenCanPlay(){
-            music.play();
-            startSound.play();
-            setTimeout(startTimer, sink[musicForm.value]);
-            music.removeEventListener('canplaythrough',whenCanPlay);
-        }
-        music.addEventListener('canplaythrough', whenCanPlay,false);
+        music.play();
+        startSound.play();
+        setTimeout(startTimer, sink[musicForm.value]);
     });
 
 });
