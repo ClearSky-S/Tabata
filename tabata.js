@@ -73,9 +73,17 @@ document.addEventListener("DOMContentLoaded", () => {
         breakBar.style.width = "0%";
         breakVideo.classList.remove("d-none");
         workVideo.classList.add("d-none"); 
-        music.play();
-        startSound.play();
-        setTimeout(startTimer, sink[musicForm.value]);
+        function waitMusicLoading(){
+            if(music.readyState>=3){
+                music.play();
+                startSound.play();
+                setTimeout(startTimer, sink[musicForm.value]);
+            } else{
+                setTimeout(waitMusicLoading,30);
+            }
+        }
+        
+        setTimeout(waitMusicLoading,30);
     });
 
 });
