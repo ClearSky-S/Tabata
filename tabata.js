@@ -71,9 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
         music.setAttribute('src',"audio/"+musicForm.value+".m4a");
         music.load();
         music.play();
-        music.onLoad = ()=>{
+        music.onloadeddata = ()=>{
             startSound.play();
             setTimeout(startTimer, sink[musicForm.value]);
+            music.onloadeddata= null;
         }
     });
 
